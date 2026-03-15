@@ -5,7 +5,12 @@ const multer = require("multer");
 const uploadToS3 = require("./uploadToS3");
 
 const app = express();
-const upload = multer();
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 20 * 1024 * 1024,
+  },
+});
 
 app.use(express.json());
 
