@@ -10,16 +10,19 @@ const upload = multer();
 app.use(express.json());
 
 app.get("/", (req, res) => {
+  console.log("Running default url");
   res.send("My first AWS Node API is running 🚀");
 });
 
 app.get("/health", (req, res) => {
+  console.log("Running Health url");
   res.json({ ok: true });
 });
 
 /* NEW ROUTE */
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
+  console.log("Running upload url");
 
     if (!req.file) {
       return res.status(400).json({
