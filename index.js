@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
 const uploadToS3 = require("./uploadToS3");
-const db = require("./db");
+// const db = require("./db");
 
 const app = express();
 const upload = multer();
@@ -13,17 +13,17 @@ app.use(express.json());
 /* =========================
    TEST DB CONNECTION
 ========================= */
-async function testDbConnection() {
-  try {
-    const connection = await db.getConnection();
-    console.log("Connected to RDS MySQL!");
-    connection.release();
-  } catch (error) {
-    console.error("Database connection failed:", error.message);
-  }
-}
+// async function testDbConnection() {
+//   try {
+//     const connection = await db.getConnection();
+//     console.log("Connected to RDS MySQL!");
+//     connection.release();
+//   } catch (error) {
+//     console.error("Database connection failed:", error.message);
+//   }
+// }
 
-testDbConnection();
+// testDbConnection();
 
 /* =========================
    BASIC ROUTES
