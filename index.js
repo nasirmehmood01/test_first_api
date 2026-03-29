@@ -13,17 +13,17 @@ app.use(express.json());
 /* =========================
    TEST DB CONNECTION
 ========================= */
-// async function testDbConnection() {
-//   try {
-//     const connection = await db.getConnection();
-//     console.log("Connected to RDS MySQL!");
-//     connection.release();
-//   } catch (error) {
-//     console.error("Database connection failed:", error.message);
-//   }
-// }
+async function testDbConnection() {
+  try {
+    const connection = await db.getConnection();
+    console.log("Connected to RDS MySQL!");
+    connection.release();
+  } catch (error) {
+    console.error("Database connection failed:", error.message);
+  }
+}
 
-// testDbConnection();
+testDbConnection();
 
 /* =========================
    BASIC ROUTES
