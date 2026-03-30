@@ -23,7 +23,7 @@ async function testDbConnection() {
   }
 }
 
-// testDbConnection();
+testDbConnection();
 
 /* =========================
    BASIC ROUTES
