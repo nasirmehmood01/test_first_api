@@ -1,12 +1,12 @@
-// require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
-// const multer = require("multer");
-// const uploadToS3 = require("./uploadToS3");
+const multer = require("multer");
+const uploadToS3 = require("./uploadToS3");
 // const db = require("./db");
 
 const app = express();
-// const upload = multer();
+const upload = multer();
 
 app.use(express.json());
 
@@ -41,34 +41,34 @@ app.get("/health", (req, res) => {
 /* =========================
    S3 UPLOAD ROUTE
 ========================= */
-// app.post("/upload", upload.single("file"), async (req, res) => {
-//   try {
-//     console.log("Running upload url");
+app.post("/upload", upload.single("file"), async (req, res) => {
+  try {
+    console.log("Running upload url");
 
-//     if (!req.file) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "No file uploaded",
-//       });
-//     }
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: "No file uploaded",
+      });
+    }
 
-//     const result = await uploadToS3(req.file);
+    const result = await uploadToS3(req.file);
 
-//     res.json({
-//       success: true,
-//       message: "File uploaded to S3",
-//       data: result,
-//     });
-//   } catch (error) {
-//     console.error(error);
+    res.json({
+      success: true,
+      message: "File uploaded to S3",
+      data: result,
+    });
+  } catch (error) {
+    console.error(error);
 
-//     res.status(500).json({
-//       success: false,
-//       message: "Upload failed",
-//       error: error.message,
-//     });
-//   }
-// });
+    res.status(500).json({
+      success: false,
+      message: "Upload failed",
+      error: error.message,
+    });
+  }
+});
 
 /* =========================
    DATABASE ROUTES
