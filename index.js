@@ -4,6 +4,7 @@ const express = require("express");
 const multer = require("multer");
 const uploadToS3 = require("./uploadToS3");
 const db = require("./db");
+const os = require("os");
 
 const app = express();
 const upload = multer();
@@ -30,8 +31,7 @@ testDbConnection();
 ========================= */
 app.get("/", (req, res) => {
   console.log("Running default url");
-  res.send("My first AWS Node API is running 🚀");
-});
+   res.send(`My AWS Node API is running 🚀 - Instance: ${os.hostname()}`);});
 
 app.get("/health", (req, res) => {
   console.log("Running Health url");
