@@ -31,7 +31,7 @@ testDbConnection();
 ========================= */
 app.get("/", (req, res) => {
   console.log("Running default url");
-   res.send(`My AWS Node API is running 🚀 - Instance: ${os.hostname()}`);});
+   res.send(`My AWS Node API is running 🚀 -V2- Instance: ${os.hostname()}`);});
 
 app.get("/health", (req, res) => {
   console.log("Running Health url");
